@@ -1,0 +1,33 @@
+[
+ {
+  "Name":"Sara",
+  "Age":21,
+  "Salary":57000
+ },
+ {
+  "Name":"Jack",
+  "Age":22,
+   "Salary":60000
+ },
+  {
+  "Name":"Jonh",
+  "Age":21,
+   "Salary":57000
+ },
+  {
+  "Name":"casey",
+  "Age":23,
+   "Salary":63000
+ },
+  {
+  "Name":"Rob",
+  "Age":26,
+   "Salary":75000
+ },
+  {
+  "Name":"Tyler",
+  "Age":30,
+   "Salary":75000
+ }
+
+]

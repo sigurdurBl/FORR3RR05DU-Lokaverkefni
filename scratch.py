@@ -9,7 +9,6 @@ class Node:
         self.prv = None
         self.nxt = None
 
-
     def append(self,n,a,s):
         if self.nxt:
             return self.nxt.append(n,a,s)
@@ -19,26 +18,21 @@ class Node:
             curr.prv = self
             return True
 
-
-    def printList(self):
+    def printlist(self):
         print(self.name),
         if self.nxt:
-            self.nxt.printList()
+            self.nxt.printlist()
         else:
             print("")
 
-
-
-    def find(self, n):
-        if self.name == n:
+    def find(self, n,a,s):
+        if self.name == n and self.age ==a and self.salary ==s:
             return True
         else:
             if self.nxt:
-                return self.nxt.find(d)
+                return self.nxt.find(n, a, s)
             else:
                 return False
-
-
 
     def delete(self, n):
 
@@ -60,7 +54,6 @@ class DLL:
     def __init__(self):
         self.head = None
 
-
     def push(self,n,a,s):
         if self.head:
             temp_next = self.head
@@ -69,8 +62,6 @@ class DLL:
         else:
             self.head = Node(n,a,s)
 
-
-
     def append(self, n,a,s):
         if self.head:
             return self.head.append(n,a,s)
@@ -78,14 +69,11 @@ class DLL:
             self.head = Node(n,a,s)
             return True
 
-
-    def printList(self):
+    def printlist(self):
         if self.head:
-            self.head.printList()
+            self.head.printlist()
         else:
             print("Empty list!")
-
-
 
     def find(self, n,a,s):
         if self.head:
@@ -93,46 +81,64 @@ class DLL:
         else:
             return False
 
-
     def delete(self, n):
         if self.head is None:
             return False
-        elif self.head.data == n:
+        elif self.head == n:
             self.head = self.head.nxt
             return True
         else:
             return self.head.delete(n)
 
+
+dbl = DLL()
+
+
 with open('scratch.json','r')as myfile:
     data = myfile.read()
     obj = json.loads(data)
-    print(type(obj))
-    for x in obj:
-        print(x)
+    dbl.append(obj,obj,obj)
+    dbl.printlist()
 myfile.close()
-n = 1
+
+n = 0
 while n == 0:
     print("do you want to enter a new staf member press 1")
     print("do you want to find a staf member press 2")
     print("do you want to delete a staf member press 3")
     print("do you want to modify a staf info press 4")
-    val =int(input("waht do you want to do"))
+    print("do you want to quit")
+    val = int(input("what do you want to do"))
 
     if val == 1:
         name = input("Enter name")
         age = input("Enter age")
         salary = input("Enter salary")
-
-        dbl = DLL()
-        dbl.append(name,age,salary)
-        dbl.printList()
-
+        dbl.append(name, age, salary)
+        dbl.printlist()
     if val == 2:
         name = input("Enter name")
         age = input("Enter age")
         salary = input("Enter salary")
-        dbl = DLL()
-        dbl.find(name,age,salary)
+        dbl.find(name, age, salary)
+        print(dbl.find(name,age,salary))
+
+    if val == 3:
+        name = input("Enter name")
+        dbl.delete(name)
+        dbl.printlist()
+
+    if val == 4:
+        name = input("Enter name")
+        age = input("Enter age")
+        salary = input("Enter salary")
+    if val == 5:
+        with open('scratch.json', 'w')as file:
+            json.dump(dbl, file)
+        myfile.close()
+        n = 1
+        
+        
 
 
 

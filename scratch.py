@@ -2,31 +2,31 @@ import json
 
 
 class Node:
-    def __init__(self, n,a,s):
+    def __init__(self, n, a, s):
         self.name = n
         self.age = a
         self.salary = s
         self.prv = None
         self.nxt = None
 
-    def append(self,n,a,s):
+    def append(self, n, a, s):
         if self.nxt:
-            return self.nxt.append(n,a,s)
+            return self.nxt.append(n, a, s)
         else:
-            curr = Node(n,a,s)
+            curr = Node(n, a, s)
             self.nxt = curr
             curr.prv = self
             return True
 
     def printlist(self):
-        print(self.name),
         if self.nxt:
+            print(self.name,self.age,self.salary)
             self.nxt.printlist()
         else:
-            print("")
+            print(self.name)
 
-    def find(self, n,a,s):
-        if self.name == n and self.age ==a and self.salary ==s:
+    def find(self, n, a, s):
+        if self.name == n and self.age == a and self.salary == s:
             return True
         else:
             if self.nxt:
@@ -62,11 +62,11 @@ class DLL:
         else:
             self.head = Node(n,a,s)
 
-    def append(self, n,a,s):
+    def append(self, n, a, s):
         if self.head:
-            return self.head.append(n,a,s)
+            return self.head.append(n, a, s)
         else:
-            self.head = Node(n,a,s)
+            self.head = Node(n, a, s)
             return True
 
     def printlist(self):
@@ -75,9 +75,9 @@ class DLL:
         else:
             print("Empty list!")
 
-    def find(self, n,a,s):
+    def find(self, n, a, s):
         if self.head:
-            return self.head.find(n,a,s)
+            return self.head.find(n, a , s)
         else:
             return False
 
@@ -91,13 +91,18 @@ class DLL:
             return self.head.delete(n)
 
 
+
 dbl = DLL()
 
 
-with open('scratch.json','r')as myfile:
+with open('scratch.json', 'r')as myfile:
     data = myfile.read()
     obj = json.loads(data)
-    dbl.append(obj,obj,obj)
+    for x in obj:
+        name = x['Name']
+        age = x['Age']
+        salary = x['Salary']
+        dbl.append(name,age,salary)
     dbl.printlist()
 myfile.close()
 
@@ -132,6 +137,13 @@ while n == 0:
         name = input("Enter name")
         age = input("Enter age")
         salary = input("Enter salary")
+        print(dbl.find(name,age,salary))
+        if name == name and age == age and salary == salary:
+            name = input("change name if not type the same name")
+            age = input("change age if not type the same age")
+            salary = input("change the salary if not type the same salary")
+            dbl.printlist()
+
     if val == 5:
         with open('scratch.json', 'w')as file:
             json.dump(dbl, file)

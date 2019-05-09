@@ -161,7 +161,7 @@ while n == 0:
 
     if val == 5:
         with open('scratch.json', 'w')as file:
-            json.dump(dbl, file)
+            json.dump(dbl,file)
         myfile.close()
         n = 1
         

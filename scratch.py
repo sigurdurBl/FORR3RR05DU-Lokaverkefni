@@ -77,7 +77,7 @@ class DLL:
 
     def find(self, n, a, s):
         if self.head:
-            return self.head.find(n, a , s)
+            return self.head.find(n, a, s)
         else:
             return False
 
@@ -139,10 +139,25 @@ while n == 0:
         salary = input("Enter salary")
         print(dbl.find(name,age,salary))
         if name == name and age == age and salary == salary:
-            name = input("change name if not type the same name")
-            age = input("change age if not type the same age")
-            salary = input("change the salary if not type the same salary")
-            dbl.printlist()
+            a = 0
+            while a == 0:
+                print("1 Do you want to change the name?")
+                print("2 DO you want to change the age?")
+                print("3 Do you want to change the salary?")
+                print("4 Quit")
+                change = int(input("what do you want to do?"))
+                if change == 1:
+                    name1 = input("change name if not type the same name")
+                    name = name1
+                if change == 2:
+                    age1 = input("change age if not type the same age")
+                    age = age1
+                if change == 3:
+                    salary1 = input("change the salary if not type the same salary")
+                    salary = salary1
+                if change == 4:
+                    dbl.printlist()
+                    a = 1
 
     if val == 5:
         with open('scratch.json', 'w')as file:

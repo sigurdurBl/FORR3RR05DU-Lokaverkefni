@@ -23,7 +23,7 @@ class Node:
             print(self.name,self.age,self.salary)
             self.nxt.printlist()
         else:
-            print(self.name)
+            print(self.name,self.age,salary)
 
     def find(self, n, a, s):
         if self.name == n and self.age == a and self.salary == s:
